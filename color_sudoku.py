@@ -335,9 +335,12 @@ class ColorSudokuApp:
 
     @staticmethod
     def _mix_with_gray(hex_color, gray, ratio):
+        """Blend a hex color with gray using the given ratio (0.0 to 1.0)."""
+
         def to_rgb(code):
             code = code.lstrip("#")
-            return tuple(int(code[i:i + 2], 16) for i in (0, 2, 4))
+            rgb_positions = (0, 2, 4)  # #RRGGBB component offsets.
+            return tuple(int(code[i:i + 2], 16) for i in rgb_positions)
 
         c1 = to_rgb(hex_color)
         c2 = to_rgb(gray)
